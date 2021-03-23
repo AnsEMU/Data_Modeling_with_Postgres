@@ -7,6 +7,15 @@ from datetime import datetime
 
 
 def process_song_file(cur, filepath):
+    """
+    In this process a song data file is being loaded from a filepath which has been given as an arugment.
+    It pull out a certin information from song data in order to store it into the songs table.
+    Then it pull out the certin information from song data in order to store it into the artists table.
+
+    INPUTS:
+    * cur the cursor variable
+    * filepath the file path to the song data file
+    """
     # open song file
     df = pd.read_json(filepath, lines=True)
 
@@ -20,8 +29,16 @@ def process_song_file(cur, filepath):
 
 
 def process_log_file(cur, filepath):
+    """
+    In this process a log data file is being loaded from a filepath which has been given as an arugment.
+    It pull out a certin information from log data in order to store it into the time, users and sonsplays tables.
+    
+    INPUTS:
+    * cur the cursor variable
+    * filepath the file path to the log data file
+    """
     # open log file
-    df = pd.read_json(filepath,lines=True)
+    df = pd.read_json(filepath, lines=True)
 
     # filter by NextSong action
     df = df[df['page']=='NextSong']
